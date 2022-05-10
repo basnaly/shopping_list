@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate, Switch } from "react-router-dom";
 
-import ShufersalComponent from '../Shufersal Components/ShufersalComponent';
-import OrganiComponent from '../Organi Components/OrganiComponent';
-import IherbComponent from '../Iherb Components/IherbComponent';
+import ShufersalComponent from '../Components/ShufersalComponent';
+import OrganiComponent from '../Components/OrganiComponent';
+import IherbComponent from '../Components/IherbComponent';
 import AmazonComponent from '../Amazon Components/AmazonComponent';
-import IkeaComponent from '../Ikea Components/IkeaComponent';
-import SuperpharmComponent from '../Superpharm Components/SuperpharmComponent';
+import IkeaComponent from '../Components/IkeaComponent';
+import SuperpharmComponent from '../Components/SuperpharmComponent';
 
 const ContentRouting = () => {
 

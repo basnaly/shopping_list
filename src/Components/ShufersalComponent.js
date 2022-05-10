@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Button } from "react-bootstrap";
 import CategoryComponent from "../GeneralComponents/CategoryComponent";
-import ShufersalItemForm from "./NewItemForm";
+import NewItemForm from "../GeneralComponents/NewItemForm";
 import { fetchShufersal } from "../Actions/ShufersalAction";
 import { CATEGORIES } from '../Constants/Constants';
 import ShoppingListComponent from "../GeneralComponents/ShoppingListComponent";
@@ -43,7 +43,7 @@ const ShufersalComponent = () => {
 
             <div className="d-flex flex-column">
                     {addShufersalItem || editItem ?
-                        <ShufersalItemForm close={() => setAddShufersalItem(false)} />
+                        <NewItemForm close={() => setAddShufersalItem(false)} />
                         :
                         <Button className="border shadow m-2"
                             style={styles.button}

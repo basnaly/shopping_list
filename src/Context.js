@@ -2,7 +2,6 @@ import React, { useState, createContext } from "react";
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-
 export const Context = createContext({
     reducerKey: 'shufersalReducer',
 });
@@ -19,7 +18,6 @@ export const ContextCreator = ({ children }) => {
         } else if (location.pathname === '/organi') {
             setReducerKey('organiReducer')
         }
-
 
     }, [location.pathname])
 
