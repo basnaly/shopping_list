@@ -4,7 +4,7 @@ import { FETCH_ORGANI_REQUEST, FETCH_ORGANI_SUCCESS, FETCH_ORGANI_FAILURE} from 
 
 const API_KEY = env.firebase;
 
-export const AddOrganiItem = addItem => {
+export const AddItem = addItem => {
     return (dispatch) => {
         dispatch(fetchOrganiRequest())
         axios.post(`https://learn-266e7-default-rtdb.firebaseio.com/shoping_list/organi.json?auth=${API_KEY}`,addItem)
@@ -16,38 +16,38 @@ export const AddOrganiItem = addItem => {
                 console.log(errorMessage)
             })
             .finally( () => {
-                dispatch(fetchOrgani())
+                dispatch(fetchData())
             })
     }
 }
 
-export const EditOrganiItem = id => {
+export const EditItem = id => {
     return {
         type: 'EDIT_ORGANI_ITEM',
         id
     }
 }
 
-export const ChangeExistingOrganiItem = organiItemObject => {
+export const ChangeExistingItem = organiItemObject => {
     return (dispatch, getState) => {
         const id = getState().organiReducer.editItem;
         dispatch(fetchOrganiRequest())
         axios.put(`https://learn-266e7-default-rtdb.firebaseio.com/shoping_list/organi/${ id }.json?auth=${API_KEY}`, organiItemObject)
             .then(response => {
                 console.log(response)
-                dispatch(EditOrganiItem(undefined)) //editing was finished
+                dispatch(EditItem(undefined)) //editing was finished
             })
             .catch(error => {
                 const errorMessage = error.message
                 console.log(errorMessage)
             })
             .finally( () => {
-                dispatch(fetchOrgani())
+                dispatch(fetchData())
             })
     }
 }
 
-export const DeleteOrganiItem = id => {
+export const DeleteItem = id => {
     return (dispatch) => {
         dispatch(fetchOrganiRequest())
         axios.delete(`https://learn-266e7-default-rtdb.firebaseio.com/shoping_list/organi/${ id }.json?auth=${API_KEY}`)
@@ -59,32 +59,32 @@ export const DeleteOrganiItem = id => {
                 console.log(errorMessage)
             })
             .finally( () => {
-                dispatch(fetchOrgani())
+                dispatch(fetchData())
             })
     }
 }
 
-export const fetchOrganiRequest = () => {
+const fetchOrganiRequest = () => {
     return {
         type: FETCH_ORGANI_REQUEST
     }
 }
 
-export const fetchOrganiSuccess = data => {
+const fetchOrganiSuccess = data => {
     return {
         type: FETCH_ORGANI_SUCCESS,
         data
     }
 }
 
-export const fetchOrganiFailure = error => {
+const fetchOrganiFailure = error => {
     return {
         type: FETCH_ORGANI_FAILURE,
         error
     }
 }
 
-export const fetchOrgani = () => {
+export const fetchData = () => {
     return (dispatch) => {
         dispatch(fetchOrganiRequest())
         axios.get(`https://learn-266e7-default-rtdb.firebaseio.com/shoping_list/organi.json?auth=${API_KEY}`)
@@ -99,21 +99,21 @@ export const fetchOrgani = () => {
     }
 }
 
-export const AddToOrganiShoppingList = addShoppingItem => {
+export const AddToShoppingList = addShoppingItem => {
     return {
         type: 'ADD_TO_ORGANI_SHOPPING_LIST',
         addShoppingItem
     }
 }
 
-export const RemoveFromOrganiShoppingList = name => {
+export const RemoveFromShoppingList = name => {
     return {
         type: 'REMOVE_FROM_ORGANI_SHOPPING_LIST',
         name
     }
 }
 
-export const UpdateDescriptionOrganiElement = (description, index) => {
+export const UpdateDescriptionElement = (description, index) => {
     return {
         type: 'UPDATE_DESCRIPTION_ORGANI_ELEMENT',
         description,

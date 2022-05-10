@@ -6,8 +6,6 @@ import { Context } from "../Context";
 import { Button } from "react-bootstrap";
 import CategoryComponent from "../GeneralComponents/CategoryComponent";
 import NewItemForm from "../GeneralComponents/NewItemForm";
-import { fetchShufersal } from "../Actions/ShufersalAction";
-import { CATEGORIES } from '../Constants/Constants';
 import ShoppingListComponent from "../GeneralComponents/ShoppingListComponent";
 
 const styles = {
@@ -29,15 +27,15 @@ const styles = {
 
 const ShufersalComponent = () => {
 
+    const {reducerKey, fetchData, categories} = useContext(Context);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchShufersal())
-    }, [])
+        dispatch(fetchData())
+    }, [fetchData, dispatch])
 
-    const {reducerKey} = useContext(Context);
-
-    const [addShufersalItem, setAddShufersalItem] = useState(false);
+    const [addItem, setAddItem] = useState(false);
 
     const items = useSelector(state => state[reducerKey].listItems);
     const editItem = useSelector(state => state[reducerKey].editItem);
@@ -46,20 +44,20 @@ const ShufersalComponent = () => {
         <div className="d-flex justify-content-between overflow-auto me-3">
 
             <div className="d-flex flex-column">
-                    {addShufersalItem || editItem ?
-                        <NewItemForm close={() => setAddShufersalItem(false)} />
+                    {addItem || editItem ?
+                        <NewItemForm close={() => setAddItem(false)} />
                         :
                         <Button className="border shadow m-2"
                             style={styles.button}
                             variant={'light'}
-                            onClick={() => setAddShufersalItem(true)}>
+                            onClick={() => setAddItem(true)}>
                             Add new item
                         </Button>
                     }
 
                 <div className="d-flex flex-column overflow-auto">
                     {
-                        CATEGORIES.map(category => (
+                        categories.map(category => (
                             <CategoryComponent key={category.key}
                                 name={category.text}
                                 items={items.filter(item =>

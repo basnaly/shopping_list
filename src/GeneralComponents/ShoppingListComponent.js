@@ -9,12 +9,12 @@ const styles = {
     parent: {
         backgroundImage: 'url("/img/note-1.png")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
+        backgroundPosition: 'center top',
+        borderRadius: '17px',
         },
     shop: {
         fontSize: '28px',
-        margin: '10px',
+        margin: '5px',
     },
 }
 
@@ -31,7 +31,7 @@ const ShoppingListComponent = () => {
                 style={ styles.shop }>
                 Shopping list
             </div>
-            <div className="d-flex flex-column mt-2 me-3">
+            <div className="d-flex flex-column me-3 overflow-auto">
                 {
                     shoppingList.map((shoppingListItem, i) => (
                         <ItemInShoppingList shoppingListItem={ shoppingListItem }

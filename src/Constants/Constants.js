@@ -1,4 +1,4 @@
-export const CATEGORIES = [
+export const CATEGORIES_SHUFERSAL = [
     { key: 'beverages', text: 'Beverages' },
     { key: 'dairy', text: 'Dairy' },
     { key: 'meat', text: 'Meat' },
@@ -7,7 +7,18 @@ export const CATEGORIES = [
     { key: 'nuts', text: 'Nuts and dried fruits' },
     { key: 'wipes', text: 'Wipes' },
     { key: 'clean', text: 'Cleanings' },
-]
+];
+
+export const CATEGORIES_ORGANI = [
+    { key: 'vegatables', text: 'Vegetables' },
+    { key: 'fruits', text: 'Fruits' },
+    { key: 'green', text: 'Green' },
+    { key: 'nuts', text: 'Nuts & seeds' },
+    { key: 'dried_fruits', text: 'Dried fruits' },
+    { key: 'grocery', text: 'Grocery' },
+    { key: 'clean', text: 'Cleanings' },
+];
+
 
 export const FETCH_SHUFERSAL_REQUEST = 'FETCH_SHUFERSAL_REQUEST';
 export const FETCH_SHUFERSAL_SUCCESS = 'FETCH_SHUFERSAL_SUCCESS';

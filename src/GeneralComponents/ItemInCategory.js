@@ -3,13 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useContext } from "react";
 import { Context } from "../Context";
 
-import { Button, InputGroup, FormControl } from 'react-bootstrap';
+import { InputGroup } from 'react-bootstrap';
 import { BsTrash } from 'react-icons/bs';
 import { BiMessageRoundedEdit } from 'react-icons/bi';
-
-import { DeleteShufersalItem, EditShufersalItem, AddToShufersalShoppingList, RemoveFromShufersalShoppingList } from '../Actions/ShufersalAction'
-
-
 
 const styles = {
     item: {
@@ -32,15 +28,17 @@ const styles = {
 
 const ItemInCategory = ({item}) => {
 
-    const {reducerKey} = useContext(Context);
+    const {reducerKey, DeleteItem, EditItem,
+        RemoveFromShoppingList, AddToShoppingList
+    } = useContext(Context);
 
     const shoppingList = useSelector(state => state[reducerKey].shoppingList);
 
     const dispatch = useDispatch();
 
-    const remove = () => dispatch(DeleteShufersalItem(item.id));
+    const remove = () => dispatch(DeleteItem(item.id));
 
-    const edit = () => dispatch(EditShufersalItem(item.id));
+    const edit = () => dispatch(EditItem(item.id));
 
     const select = () => {
 
@@ -49,9 +47,9 @@ const ItemInCategory = ({item}) => {
         }
 
         if (isInShoppingCart) {
-            dispatch(RemoveFromShufersalShoppingList(item.name))
+            dispatch(RemoveFromShoppingList(item.name))
         } else {
-            dispatch(AddToShufersalShoppingList(shoppingElement));
+            dispatch(AddToShoppingList(shoppingElement));
         }
     }
 

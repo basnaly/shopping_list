@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useContext } from "react";
 import { Context } from "../Context";
 
-import { AddShufersalItem, ChangeExistingShufersalItem } from "../Actions/ShufersalAction";
 import { Button, InputGroup, FormControl, Dropdown } from "react-bootstrap";
-import { CATEGORIES } from '../Constants/Constants';
-
+import { CATEGORIES_SHUFERSAL } from '../Constants/Constants';
 
 const styles = {
     group: {
@@ -32,7 +30,7 @@ const styles = {
 
 const NewItemForm = (props) => {
 
-    const {reducerKey} = useContext(Context);
+    const {reducerKey, AddItem, ChangeExistingItem, categories} = useContext(Context);
 
     let itemObject = useSelector(state => state[reducerKey].listItems.find(el => 
         el.id === state[reducerKey].editItem));
@@ -40,7 +38,7 @@ const NewItemForm = (props) => {
 
     const editItem = useSelector(state => state[reducerKey].editItem);
 
-    const [category, setCategory] = useState(itemObject?.category ?? 'dairy');
+    const [category, setCategory] = useState(itemObject?.category ?? categories[0].key);
     const [name, setName] = useState(itemObject?.name ??'');
 
     const dispatch = useDispatch();
@@ -56,10 +54,10 @@ const NewItemForm = (props) => {
         }
 
         if (!editItem) {
-            dispatch(AddShufersalItem(addedItem));
+            dispatch(AddItem(addedItem));
                 props.close()
             } else {
-                dispatch(ChangeExistingShufersalItem(addedItem))   
+                dispatch(ChangeExistingItem(addedItem))   
             }
         
         setCategory('dairy');
@@ -81,7 +79,7 @@ const NewItemForm = (props) => {
 
                     <Dropdown.Menu style={ styles.dropdown }>
                         {
-                            CATEGORIES.map(category => (
+                            categories.map(category => (
                                 <Dropdown.Item eventKey={ category.key } 
                                     key={ category.key }>
                                     { category.text }
