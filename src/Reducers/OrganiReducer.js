@@ -48,13 +48,13 @@ const OrganiReducer = (state = initState, action) => {
                 shoppingList: restShoppingList
             }
 
-        case 'EDIT_SHUFERSAL_ITEM':
+        case 'EDIT_ORGANI_ITEM':
             return {
                 ...state,
                 editItem: action.id
             }
 
-        case 'UPDATE_DESCRIPTION_ELEMENT':
+        case 'UPDATE_DESCRIPTION_ORGANI_ELEMENT':
             let updatedShoppingList = state.shoppingList.slice()
             updatedShoppingList[action.index].text = action.description;
             return {
@@ -69,12 +69,12 @@ const OrganiReducer = (state = initState, action) => {
             }
     
         case FETCH_ORGANI_SUCCESS:
-            let loadedOrganiData = Object.keys(action.organiData).map(el =>
-                ({...action.organiData[el], id: el})); // transform object to array
+            let loadedData = Object.keys(action.data).map(el =>
+                ({...action.data[el], id: el})); // transform object to array
             return {
                 ...state,
                 loading: false,
-                listItems: loadedOrganiData
+                listItems: loadedData
             }
     
         case FETCH_ORGANI_FAILURE:

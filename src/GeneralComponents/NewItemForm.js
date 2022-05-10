@@ -28,7 +28,7 @@ const styles = {
     },
 }
 
-const ShufersalItemForm = (props) => {
+const NewItemForm = (props) => {
 
     let itemObject = useSelector(state => state.shufersalReducer.listItems.find(el => 
         el.id === state.shufersalReducer.editItem));
@@ -112,4 +112,4 @@ const ShufersalItemForm = (props) => {
     )
 }
 
-export default ShufersalItemForm;
+export default NewItemForm;

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Button } from "react-bootstrap";
-import CategoryComponent from "./CategoryComponent";
-import ShufersalItemForm from "./ShufersalItemForm";
+import CategoryComponent from "../GeneralComponents/CategoryComponent";
+import ShufersalItemForm from "./NewItemForm";
 import { fetchShufersal } from "../Actions/ShufersalAction";
 import { CATEGORIES } from '../Constants/Constants';
-import ShoppingListComponent from "./ShoppingListComponent";
+import ShoppingListComponent from "../GeneralComponents/ShoppingListComponent";
 
 const styles = {
     form: {

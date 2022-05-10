@@ -1,27 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { ContextCreator } from "./Context";
 
-import ContentRouting from "./General Components/ContentRouting";
-import NavPanelComponent from "./General Components/NavPanelComponent";
-
-
-const styles = {
-    parent: {
-    backgroundImage: 'url("/img/texture-2.jpeg")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    height: '100vh',
-    },
-}
+import ContentRouting from "./GlobalComponents/ContentRouting";
+import NavPanelComponent from "./GlobalComponents/NavPanelComponent";
 
 const AppShopLists = () => {
 
     return (
-        <div className="d-flex flex-column vh-100"
-            style={ styles.paren }>
+        <div className="d-flex flex-column vh-100">
             <Router>
-                <NavPanelComponent />
-                <ContentRouting />
+                <ContextCreator>
+                    <NavPanelComponent />
+                    <ContentRouting />
+                </ContextCreator>
             </Router>
         </div>
     )
