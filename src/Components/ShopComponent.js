@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
+import { Context } from "../Context";
 
 import { Button } from "react-bootstrap";
 import CategoryComponent from "../GeneralComponents/CategoryComponent";
@@ -33,10 +35,12 @@ const ShufersalComponent = () => {
         dispatch(fetchShufersal())
     }, [])
 
+    const {reducerKey} = useContext(Context);
+
     const [addShufersalItem, setAddShufersalItem] = useState(false);
 
-    const items = useSelector(state => state.shufersalReducer.listItems);
-    const editItem = useSelector(state => state.shufersalReducer.editItem);
+    const items = useSelector(state => state[reducerKey].listItems);
+    const editItem = useSelector(state => state[reducerKey].editItem);
 
     return (
         <div className="d-flex justify-content-between overflow-auto me-3">

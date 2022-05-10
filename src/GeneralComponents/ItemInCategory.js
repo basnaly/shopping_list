@@ -1,11 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useContext } from "react";
+import { Context } from "../Context";
 
 import { Button, InputGroup, FormControl } from 'react-bootstrap';
 import { BsTrash } from 'react-icons/bs';
 import { BiMessageRoundedEdit } from 'react-icons/bi';
 
 import { DeleteShufersalItem, EditShufersalItem, AddToShufersalShoppingList, RemoveFromShufersalShoppingList } from '../Actions/ShufersalAction'
+
 
 
 const styles = {
@@ -29,7 +32,9 @@ const styles = {
 
 const ItemInCategory = ({item}) => {
 
-    const shoppingList = useSelector(state => state.shufersalReducer.shoppingList);
+    const {reducerKey} = useContext(Context);
+
+    const shoppingList = useSelector(state => state[reducerKey].shoppingList);
 
     const dispatch = useDispatch();
 

@@ -1,14 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-import { Button, InputGroup, FormControl } from 'react-bootstrap';
-import { BsTrash } from 'react-icons/bs';
-import { BiMessageRoundedEdit } from 'react-icons/bi';
-
-
-import { DeleteShufersalItem, EditShufersalItem, AddToShoppingList, RemoveFromShoppingList } from '../Actions/ShufersalAction'
 import ItemInCategory from "./ItemInCategory";
-
 
 const styles = {
     title: {
@@ -33,8 +25,6 @@ const CategoryComponent = (props) => {
                     )
                 }
             </div>
-
-
         </div>
     )
 }

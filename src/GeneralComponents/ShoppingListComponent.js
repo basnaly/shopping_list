@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { Context } from "../Context";
 
-import { InputGroup, FormControl } from "react-bootstrap";
-import { UpdateDescriptionElement } from '../Actions/ShufersalAction';
 import ItemInShoppingList from "./ItemInShoppingList";
 
 const styles = {
@@ -20,7 +20,9 @@ const styles = {
 
 const ShoppingListComponent = () => {
 
-    const shoppingList = useSelector(state => state.shufersalReducer.shoppingList);
+    const {reducerKey} = useContext(Context);
+
+    const shoppingList = useSelector(state => state[reducerKey].shoppingList);
     
     return (
         <div className="d-flex flex-column align-items-center border shadow m-2 p-2 overflow-auto"

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useContext } from "react";
+import { Context } from "../Context";
 
 import { AddShufersalItem, ChangeExistingShufersalItem } from "../Actions/ShufersalAction";
 import { Button, InputGroup, FormControl, Dropdown } from "react-bootstrap";
@@ -30,11 +32,13 @@ const styles = {
 
 const NewItemForm = (props) => {
 
-    let itemObject = useSelector(state => state.shufersalReducer.listItems.find(el => 
-        el.id === state.shufersalReducer.editItem));
+    const {reducerKey} = useContext(Context);
+
+    let itemObject = useSelector(state => state[reducerKey].listItems.find(el => 
+        el.id === state[reducerKey].editItem));
     console.log(itemObject);
 
-    const editItem = useSelector(state => state.shufersalReducer.editItem);
+    const editItem = useSelector(state => state[reducerKey].editItem);
 
     const [category, setCategory] = useState(itemObject?.category ?? 'dairy');
     const [name, setName] = useState(itemObject?.name ??'');
